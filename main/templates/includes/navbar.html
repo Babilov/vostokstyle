@@ -1,0 +1,62 @@
+<nav>
+    {% load static %}
+    <a href="{% url 'home' %}"><img src="../../../media/photos/logo.jpg" alt="logo" style="width: 200px; height: auto"></a>
+
+    <a href="#" class="item">
+        Каталог
+    </a>
+
+    <a href="#" class="item">
+        Доставка и оплата
+    </a>
+
+    <a href="#" class="item">
+        Контакты
+    </a>
+
+    <div class="info" style="display: flex; flex-direction: column; margin-top: 2px">
+        <span style="font-size: 20px; font-weight: bold">
+            +7(919) 386-85-52
+        </span>
+        <span>
+            test@mail.ru
+        </span>
+        <span style="font-weight: bold; font-size: 10px; margin-top: 3px">
+            Время работы: Пн-ЧТ 9.00-17.00, Пт 9.00-16.00 Сб,Вс – выходной <br>
+            Заказы принимаем круглосуточно!
+        </span>
+    </div>
+
+</nav>
+
+<style>
+    nav{
+        display: flex;
+        justify-content: center;
+        height: 10%;
+        min-height: 30px;
+        background: #010300;
+        align-items: center;
+        border-bottom: 5px solid #FF0600;
+    }
+
+    a.item{
+        font-family: Arial Narrow, sans-serif;
+        letter-spacing: 1px;
+        margin: 0 50px 0 50px;
+        padding: 30px 10px 30px 10px;
+        font-size: 20px;
+    }
+    a.item:hover{
+        text-decoration: none;
+        color: white;
+        background: #1F1F1F;
+        transition: all .4s ease;
+    }
+
+    .info, a.item{
+        color: white;
+        text-shadow: #131313 0 0 4px;
+    }
+
+</style>
