@@ -1,0 +1,71 @@
+<div class="wrapper">
+
+        {% for item in data.burners %}
+            <div class="item">
+                <a href="{% url 'item-detail' item.pk %}">
+                    <div>
+                        {{ item.name }}
+                    </div>
+                    <div>
+                        <img src="media/{{ item.photo }}" alt="no_photo">
+                    </div>
+                    <div>
+                        <span>{{ item.price }}₽</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+
+<style>
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .wrapper a{
+        color: white;
+        text-shadow: #AAAAAA 1px 1px 4px;
+        margin: 8px 0;
+        font-size: 15px;
+    }
+
+    .wrapper a:hover{
+        text-decoration: none;
+        text-shadow: #AAAAAA 3px 3px 10px;
+        transition: all .6s ease;
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    .wrapper span{
+        font-size: 20px;
+    }
+
+    .item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 20px;
+    }
+
+    .item a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item a div{
+        margin-top: 10px;
+    }
+
+    img{
+        width: 200px;
+        height: auto;
+    }
+</style>
+
+</div>

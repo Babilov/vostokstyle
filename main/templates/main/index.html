@@ -4,4 +4,7 @@
 
 {% block nav %} {% include 'includes/navbar.html' %} {% endblock %}
 
-{% block content %} {# <img src="../../../media/photos/bg.jpg"> #} {% endblock %}
+{% block content %}
+    {% include 'includes/categories.html' %}
+    {% include 'includes/items.html' %}
+{% endblock %}

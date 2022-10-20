@@ -1,0 +1,25 @@
+<div class="categories">
+    {% for category in data.categories %}
+        <a href="#">{{ category }}</a>
+    {% endfor %}
+</div>
+
+<style>
+    .categories{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .categories a{
+        color: white;
+        text-shadow: #AAAAAA 1px 1px 4px;
+        margin: 10px 10px 0 10px;
+    }
+
+    .categories a:hover{
+        text-shadow: #AAAAAA 3px 3px 10px;
+        text-decoration: none;
+        transition: all .5s ease;
+    }
+</style>
