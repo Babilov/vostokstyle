@@ -1,0 +1,53 @@
+nav{
+        display: flex;
+        justify-content: center;
+        height: 12%;
+        min-height: 35px;
+        background: #010300;
+        align-items: center;
+
+    }
+
+    a.nav__item{
+        font-family: Arial Narrow, sans-serif;
+        letter-spacing: 1px;
+        margin: 0 50px 0 50px;
+        padding: 30px 10px 30px 10px;
+        font-size: 20px;
+    }
+    a.nav__item:hover{
+        text-decoration: none;
+        color: white;
+        background: #1F1F1F;
+        text-shadow: #AAAAAA 5px 5px 10px;
+        transition: all .4s ease;
+    }
+
+    .info, a.nav__item{
+        color: white;
+        text-shadow: #AAAAAA 1px 1px 4px;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2px
+    }
+
+    .info span{
+        font-weight: bold;
+    }
+
+    .info .phone{
+        font-size: 20px;
+    }
+
+    .info .time_work{
+        font-weight: bold;
+        font-size: 10px;
+        margin-top: 3px
+    }
+
+    .logo{
+        width: 200px;
+        height: auto
+    }

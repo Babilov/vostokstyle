@@ -7,7 +7,7 @@
                         {{ item.name }}
                     </div>
                     <div>
-                        <img src="media/{{ item.photo }}" alt="no_photo">
+                        <img src="media/{{ item.photo_main }}" alt="no_photo">
                     </div>
                     <div>
                         <span>{{ item.price }}₽</span>
@@ -15,8 +15,9 @@
                 </a>
             </div>
         {% endfor %}
+</div>
 
-
+{% block style %}
 <style>
     .wrapper{
         display: flex;
@@ -67,5 +68,5 @@
         height: auto;
     }
 </style>
+{% endblock %}
 
-</div>

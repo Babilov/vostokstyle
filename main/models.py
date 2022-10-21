@@ -5,7 +5,9 @@ class Burner(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='Категория', blank=True)
     name = models.CharField(max_length=100, verbose_name='Название')
     price = models.IntegerField(verbose_name='Цена')
-    photo = models.ImageField(upload_to='photos/', verbose_name='Фото')
+    photo_main = models.ImageField(upload_to='photos/', verbose_name='Фото 1')
+    photo_second = models.ImageField(upload_to='photos/', verbose_name='Фото 2', blank=True)
+    photo_third = models.ImageField(upload_to='photos/', verbose_name='Фото 3', blank=True)
     upload_at = models.DateTimeField(auto_now_add=True)
 
     power = models.FloatField(verbose_name='Мощность')
@@ -22,6 +24,7 @@ class Burner(models.Model):
 
     def save(self, *args, **kwargs):
         self.category_id = 1
+
         super(Burner, self).save(*args, **kwargs)
 
     def __str__(self):
