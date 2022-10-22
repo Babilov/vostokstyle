@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Burner(models.Model):
@@ -33,6 +34,10 @@ class Burner(models.Model):
 
 class Category(models.Model):
     category_name = models.CharField(max_length=50, verbose_name='Категория')
+    slug = models.SlugField(max_length=20, unique=True, verbose_name='URL')
 
     def __str__(self):
         return str(self.category_name)
+
+    def get_absolute_url(self):
+        return reverse('category/', kwargs={'category_slug_items': self.slug})

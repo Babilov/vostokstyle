@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Burner, Category
 
@@ -28,3 +28,12 @@ class ItemDetailView(DetailView):
             return queryset.get(pk=pk)
         except:
             raise Http404('Ох, нет объекта;)')
+
+
+# def show_category_items(request, category_slug_items):
+#     category_id = Category.objects.get(slug=category_slug_items).id
+#     try:
+#         items = Burner.objects.get(category=category_id)
+#     except:
+#         items =
+

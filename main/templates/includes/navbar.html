@@ -1,9 +1,11 @@
-<nav>
+<nav class="navbar">
     <a href="{% url 'home' %}"><img src="../../../media/photos/logo.jpg" alt="logo" style="width: 200px; height: auto"></a>
-
-    <a href="#" class="item">
-        Каталог
-    </a>
+    <div class="dropdown">
+        <a href="" class="item">
+            Каталог
+        </a>
+        {% include 'includes/categories.html' %}
+    </div>
 
     <a href="#" class="item">
         Доставка и оплата

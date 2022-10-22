@@ -1,20 +1,33 @@
-<div class="categories">
+<div class="categories dropdown-menu hidden">
     {% for category in data.categories %}
-        <a href="#">{{ category }}</a>
+        <div style="display: flex; width: 96%" class="dropdown-menu__div">
+            <a href="#">{{ category }}</a>
+        </div>
     {% endfor %}
 </div>
 
 <style>
     .categories{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-left: 6px;
     }
 
-    .categories a{
-        color: white;
-        text-shadow: #AAAAAA 1px 1px 4px;
+    .dropdown-menu__div a{
+        color: black;
+    {#  text-shadow: #AAAAAA 1px 1px 4px; #}
         margin: 10px 10px 0 10px;
+
+    }
+
+    .dropdown-menu__div{
+        border-bottom: 1px solid black;
+    }
+
+    .dropdown-menu:last-child{
+        border-bottom: 0 solid pink;
     }
 
     .categories a:hover{
@@ -23,3 +36,13 @@
         transition: all .5s ease;
     }
 </style>
+
+<script>
+    $('.navbar .dropdown').hover(function() {
+        $(this).find('.dropdown-menu').removeClass('hidden');
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(50).slideDown();
+    }, function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp();
+    });
+</script>
+
