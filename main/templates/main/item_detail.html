@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-    {{ data }}
+    {{ data.item_detail }}
 {% endblock %}
 
 {% block nav %}
@@ -19,17 +19,18 @@
             </a>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.photo_main }}" alt="First slide">
+                    <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.item_detail.photo_main }}" alt="First slide">
                 </div>
-                {% if data.photo_second %}
+
+                {% if data.item_detail.photo_second %}
                     <div class="item">
-                        <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.photo_second }}" alt="Second slide">
+                        <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.item_detail.photo_second }}" alt="Second slide">
                     </div>
                 {% endif %}
 
-                {% if data.photo_third %}
+                {% if data.item_detail.photo_third %}
                     <div class="item">
-                        <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.photo_third }}" alt="Third slide">
+                        <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.item_detail.photo_third }}" alt="Third slide">
                     </div>
                 {% endif %}
             </div>
@@ -41,11 +42,9 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
         {% include 'includes/item_description.html' %}
 
     </div>
-
 {% endblock %}
 
 {% block style %}
@@ -69,6 +68,10 @@
 
         .carousel-control-prev img, .carousel-control-next img{
             width: 25px;
+        }
+
+        .categories{
+            margin-top: 33px;
         }
 
         {#.description{#}

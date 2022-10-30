@@ -15,18 +15,23 @@
         Контакты
     </a>
 
-    <div class="info" style="display: flex; flex-direction: column; margin-top: 2px">
-        <span style="font-size: 20px; font-weight: bold">
-            +7(919) 386-85-52
-        </span>
-        <span>
-            test@mail.ru
-        </span>
-        <span style="font-weight: bold; font-size: 10px; margin-top: 3px">
-            Время работы: Пн-ЧТ 9.00-17.00, Пт 9.00-16.00 Сб,Вс – выходной <br>
-            Заказы принимаем круглосуточно!
-        </span>
-    </div>
+
+
+{#    <div class="info" style="display: flex; flex-direction: column; margin-top: 2px">#}
+{#        <span style="font-size: 20px; font-weight: bold">#}
+{#            +7(919) 386-85-52#}
+{#        </span>#}
+{#        <span>#}
+{#            test@mail.ru#}
+{#        </span>#}
+{#        <span style="font-weight: bold; font-size: 10px; margin-top: 3px">#}
+{#            Время работы: Пн-ЧТ 9.00-17.00, Пт 9.00-16.00 Сб,Вс – выходной <br>#}
+{#            Заказы принимаем круглосуточно!#}
+{#        </span>#}
+    {%  include 'includes/search.html' %}
+{#    </div>#}
+
+
 
 </nav>
 
@@ -58,6 +63,10 @@
     .info, a.item{
         color: white;
         text-shadow: #AAAAAA 1px 1px 4px;
+    }
+
+    .navbar{
+        border-bottom: 2px solid #FD4539;
     }
 
 </style>

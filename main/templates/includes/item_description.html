@@ -1,13 +1,13 @@
 <div class="description">
-    <div>{{ data }}</div>
-    <div><span>Цена................</span>{{ data.price }}₽</div>
-    <div><span>Мощность............</span>{{ data.power }} кВт</div>
-    <div><span>Давление............</span>{{ data.pressure_min }} - {{ data.pressure_max }}</div>
-    <div><span>Автоподжёг............</span>{% if data.autofire %}Есть {% else %}Нет {% endif %}</div>
-    <div><span>Давление............</span>{{ data.weight }} Кг</div>
-    <div><span>Размер............</span>{{ data.size_x }}x{{ data.size_y }}x{{ data.size_z }} См</div>
-    <div><span>Контроль пламени............</span>{% if data.flame_control %}Есть {% else %}Нет {% endif %}</div>
-    <div><span>Тип топлива............</span>{{ data.fuel_type }}</div>
+    <div>{{ data.item_detail }}</div>
+    <div><span>Цена................</span>{{ data.item_detail.price }}₽</div>
+    <div><span>Мощность............</span>{{ data.item_detail.power }} кВт</div>
+    <div><span>Давление............</span>{{ data.item_detail.pressure_min }} - {{ data.pressure_max }}</div>
+    <div><span>Автоподжёг............</span>{% if data.item_detail.autofire %}Есть {% else %}Нет {% endif %}</div>
+    <div><span>Давление............</span>{{ data.item_detail.weight }} Кг</div>
+    <div><span>Размер............</span>{{ data.item_detail.size_x }}x{{ data.size_y }}x{{ data.size_z }} См</div>
+    <div><span>Контроль пламени............</span>{% if data.item_detail.flame_control %}Есть {% else %}Нет {% endif %}</div>
+    <div><span>Тип топлива............</span>{{ data.item_detail.fuel_type }}</div>
 </div>
 
 <style>

@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <div style="color: white">
+    {% for item in data %}
+{#        {{ item.power }}#}
+{#        {{ item.price }}#}
+        {{ item.name }}
+        {{ item.price }}
+    {% endfor %}
+    </div>
+{% endblock %}
