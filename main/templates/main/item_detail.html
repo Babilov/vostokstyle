@@ -1,4 +1,6 @@
 {% extends 'main/base.html' %}
+{% load get_description %}
+{% get_description_by_id data.item_detail.item_id as description %}
 
 {% block title %}
     {{ data.item_detail }}
@@ -9,39 +11,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true">
-                    <img src="../../../media/support_items/previous.png" alt="none">
-                </span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.item_detail.photo_main }}" alt="First slide">
-                </div>
-
-                {% if data.item_detail.photo_second %}
-                    <div class="item">
-                        <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.item_detail.photo_second }}" alt="Second slide">
-                    </div>
-                {% endif %}
-
-                {% if data.item_detail.photo_third %}
-                    <div class="item">
-                        <img class="d-block " src="/media/{{ MEDIA_URL }}{{ data.item_detail.photo_third }}" alt="Third slide">
-                    </div>
-                {% endif %}
-            </div>
-
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true">
-                    <img src="../../../media/support_items/next.png" alt="none">
-                </span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+    <div class="detail-block">
+        {% include 'includes/images_carousel.html' %}
         {% include 'includes/item_description.html' %}
 
     </div>
@@ -49,6 +20,11 @@
 
 {% block style %}
     <style>
+        .detail-block{
+            height: 137%;
+            display: flex;
+            align-items: center;
+        }
         .content{
             display: flex;
             flex-direction: column;

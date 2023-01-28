@@ -1,21 +1,40 @@
+{% load get_name_and_price_tags %}
+{% get_price data.item_detail.item_id as price %}
+{% get_name data.item_detail.item_id as name %}
+{% load get_description %}
+{% get_description_by_id data.item_detail.item_id as description %}
 <div class="description">
-    <div>{{ data.item_detail }}</div>
-    <div><span>Цена................</span>{{ data.item_detail.price }}₽</div>
-    <div><span>Мощность............</span>{{ data.item_detail.power }} кВт</div>
-    <div><span>Давление............</span>{{ data.item_detail.pressure_min }} - {{ data.pressure_max }}</div>
-    <div><span>Автоподжёг............</span>{% if data.item_detail.autofire %}Есть {% else %}Нет {% endif %}</div>
-    <div><span>Давление............</span>{{ data.item_detail.weight }} Кг</div>
-    <div><span>Размер............</span>{{ data.item_detail.size_x }}x{{ data.size_y }}x{{ data.size_z }} См</div>
-    <div><span>Контроль пламени............</span>{% if data.item_detail.flame_control %}Есть {% else %}Нет {% endif %}</div>
-    <div><span>Тип топлива............</span>{{ data.item_detail.fuel_type }}</div>
+    {{ description }}
+</div>
+
+<div class="buy">
+    {{ price }} ₽
+    <button class="btn btn-success"> Добавить в корзину </button>
+    <button class="btn btn-success"> Купить </button>
 </div>
 
 <style>
     .description{
+        width: 50%;
+        font-size: 20px;
+        margin-right: 100px;
+    }
+
+    .buy{
+        height: 20%;
+        width: 20%;
+        background: white;
+        border-radius: 20px;
+        box-shadow: #AAAAAA 3px 3px 10px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
-        align-items: center;
-        color: white;
+        justify-content: center;
+        margin-right: 20px;
     }
+
+    .buy button{
+        margin-bottom: 5px;
+    }
+
 </style>

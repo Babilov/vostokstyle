@@ -1,11 +1,9 @@
 from django.contrib import admin
-from .models import Burner, Category, AllItems
+from .models import Burner, Category, AllItems, Heater, Images
 
 
-class BurnerAdmin(admin.ModelAdmin):
-    exclude = ('category', )
-
-
-admin.site.register(Burner, BurnerAdmin)
+admin.site.register(Burner)
+admin.site.register(Heater)
 admin.site.register(Category)
 admin.site.register(AllItems)
+admin.site.register(Images)

@@ -1,19 +1,41 @@
 <nav class="navbar">
-    <a href="{% url 'home' %}"><img src="../../../media/photos/logo.jpg" alt="logo" style="width: 200px; height: auto"></a>
-    <div class="dropdown">
-        <a href="" class="item">
-            Каталог
-        </a>
-        {% include 'includes/categories.html' %}
+    <a class="nav__item burger__item" href="#"><i class="fi fi-br-menu-burger burger"></i></a>
+    {% include 'includes/categories.html' %}
+    <a href="{% url 'home' %}"><img src="../../../media/photos/logo1.png" alt="logo" style="width: 200px; height: auto"></a>
+{#    <div class="dropdown">#}
+{#        <a href="" class="nav__item">#}
+{#            Каталог#}
+{#        </a>#}
+{#        {% include 'includes/categories.html' %}#}
+{#    </div>#}
+    {%  include 'includes/search.html' %}
+    <div style="display: flex">
+
+            <a href="#" class="nav__item">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                    <i class="fi fi-rr-marker"></i>
+
+                    Доставка
+                </div>
+            </a>
+
+
+            <a href="#" class="nav__item">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                    <i class="fi fi-rr-phone-call"></i>
+                    Контакты
+                </div>
+            </a>
+
+            <a href="#" class="nav__item">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                    <i class="fi fi-rr-shopping-cart"></i>
+                    Корзина
+                </div>
+            </a>
+
+
     </div>
-
-    <a href="#" class="item">
-        Доставка и оплата
-    </a>
-
-    <a href="#" class="item">
-        Контакты
-    </a>
 
 
 
@@ -28,7 +50,7 @@
 {#            Время работы: Пн-ЧТ 9.00-17.00, Пт 9.00-16.00 Сб,Вс – выходной <br>#}
 {#            Заказы принимаем круглосуточно!#}
 {#        </span>#}
-    {%  include 'includes/search.html' %}
+
 {#    </div>#}
 
 
@@ -39,34 +61,49 @@
     nav{
         display: flex;
         justify-content: center;
-        height: 12%;
-        min-height: 35px;
-        background: #010300;
+        {#background: -webkit-linear-gradient(90deg, #8d10e8,#ff5c5d,#d7d195);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #8d10e8,#ff5c5d,#d7d195);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */#}
+        background: -webkit-linear-gradient(90deg, #871971,#8f2549);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #871971,#8f2549);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        height: 20%;
         align-items: center;
+        {#border-radius: 60px;#}
     }
 
-    a.item{
+    .burger{
+        font-size: 30px;
+    }
+
+    .burger__item{
+        margin-top: 18px !important;
+    }
+
+
+    a.nav__item{
         font-family: Arial Narrow, sans-serif;
         letter-spacing: 1px;
         margin: 0 50px 0 50px;
         padding: 30px 10px 30px 10px;
-        font-size: 20px;
+        font-size: 18px;
     }
-    a.item:hover{
+    a.nav__item:hover{
         text-decoration: none;
-        color: white;
-        background: #1F1F1F;
+        color: red;
+        {#background: #1F1F1F;#}
         text-shadow: #AAAAAA 5px 5px 10px;
         transition: all .4s ease;
     }
 
-    .info, a.item{
-        color: white;
+    .info, a.nav__item{
+        color: red;
         text-shadow: #AAAAAA 1px 1px 4px;
     }
-
-    .navbar{
-        border-bottom: 2px solid #FD4539;
-    }
-
 </style>
+
+<script>
+    $('.burger__item').on('click', function() {
+        $('.categories').removeClass('hidden').addClass('active')
+    })
+
+    $('.close-menu').on('click', function() {
+        $('.categories').removeClass('active').addClass('hidden');
+    });
+</script>

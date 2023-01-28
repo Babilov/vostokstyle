@@ -1,51 +1,63 @@
-<div class="categories dropdown-menu hidden">
+<div class="categories hidden">
     {% for category in data.categories %}
-        <div style="display: flex; width: 96%" class="dropdown-menu__div">
-            <a href="#">{{ category }}</a>
+        <div>
+            <a href="{% url 'category-detail' category.id %}">{{ category }}</a>
         </div>
     {% endfor %}
+    <button class="close-menu">x</button>
 </div>
 
+
 <style>
-    .categories{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: #010300;
+    .categories {
+  position: fixed;
+  display: block;
+  width: 20%;
+  height: 100%;
+  left: -700px;
+  top: 0;
+  padding: 40px;
+  z-index: 50;
+  background: #eee;
+  animation-name: menuClose;
+  animation-duration: 1s;
+}
 
-        margin-left: 6px;
-    }
+.categories.active {
+  left: 0;
+  animation-name: menuOpen;
+  animation-duration: 1s;
+}
 
-    .dropdown-menu__div a{
-        text-shadow: #AAAAAA 1px 1px 4px;
-        margin: 10px 10px 0 10px;
-        color: white;
-        font-family: Arial Narrow, sans-serif;
-        font-size: 15px;
-    }
+.categories.active .close-menu {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 70px;
+  width: 60px;
+  height: 60px;
+  background-color: #eeeeee;
+  font-size: 20px;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+}
 
-    .dropdown-menu__div{
-        border-bottom: 1px solid white;
-    }
+@keyframes menuOpen {
+  from {
+    left: -700px;
+  }
+  to {
+    left: 0;
+  }
+}
 
-    .dropdown-menu:last-child{
-        border-bottom: 0 solid pink;
-    }
-
-    .categories a:hover{
-        text-shadow: #AAAAAA 3px 3px 10px;
-        text-decoration: none;
-        transition: all .5s ease;
-    }
+@keyframes menuClose {
+  from {
+    left: 0;
+  }
+  to {
+    left: -700px;
+  }
+}
 </style>
-
-<script>
-    $('.navbar .dropdown').hover(function() {
-        $(this).find('.dropdown-menu').removeClass('hidden');
-        $(this).find('.dropdown-menu').first().stop(true, true).delay(50).slideDown();
-    }, function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp();
-    });
-</script>
-

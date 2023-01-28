@@ -1,20 +1,29 @@
-<div class="items__title">
-    <h2><a href="category/1">Горелки для казана</a></h2>
-</div>
+{% extends 'main/base.html' %}
+{% load image_tags %}
+{% block nav %}
+    {% include 'includes/navbar.html' %}
+{% endblock %}
 
-<div class="wrapper burners" style="text-align: center">
-    {% include 'includes/burners.html' %}
-</div>
+{% block content %}
+    <div class="wrapper">
+        <div class="row">
+            {% for item in data.items %}
+                <a href="{% url 'item-detail' item.id %}">
+                    <div class="itemmmm">
+                        {% get_main_image_by_id item.id as image %}
+                        <img src="/media/{{ image }}" alt="img">
+                        <div>{{ item.name }}</div>
+                        <span>{{ item.price }}</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
 
-<div class="items__title title-heater" style="text-align: center">
-    <h2><a href="category/2">Плитки портативные</a></h2>
-</div>
 
-<div class="wrapper heaters" style="text-align: center">
-    {% include 'includes/heaters.html' %}
-</div>
-
-<style>
+{% block style %}
+    <style>
     .items__title{
         margin: 0 auto;
     }
@@ -30,6 +39,7 @@
     .wrapper{
         margin-top: 20px;
         color: red;
+        height: 140%;
     }
 
     .wrapper a{
@@ -76,8 +86,9 @@
     .row{
         margin-left: 0;
         margin-right: 0;
+        display: flex;
+        justify-content: space-between;
     }
-</style>
 
-
-
+    </style>
+{% endblock %}

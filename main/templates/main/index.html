@@ -5,7 +5,16 @@
 {% block nav %} {% include 'includes/navbar.html' %} {% endblock %}
 
 {% block content %}
-{#    {% include 'includes/categories.html' %}#}
-{#    {% include 'includes/search.html' %}#}
-    {% include 'includes/items.html' %}
+
+    <div class="main-block">{% include 'includes/items.html' %}</div>
+{% endblock %}
+
+{% block style %}
+    <style>
+        .main-block{
+            display: flex;
+            flex-direction: column;
+            height: 85.3%;
+        }
+    </style>
 {% endblock %}

@@ -1,1 +1,96 @@
 {% extends 'main/base.html' %}
+{% load image_tags %}
+
+{% block nav %}
+    {% include 'includes/navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="wrapper">
+    <div class="row">
+        {% for item in data.items %}
+            <a href="{% url 'item-detail' item.id %}">
+                {% get_main_image_by_id item.id as image %}
+                <div class="itemmmm">
+
+                    <img src="/media/{{ image }}/" alt="no_photo">
+                    <div>{{ item.name }}</div>
+                    <span>{{ item.price }}</span>
+                </div>
+                {% endfor %}
+            </a>
+    </div>
+    </div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .items__title{
+        margin: 0 auto;
+    }
+
+    .items__title a{
+        color: red;
+    }
+
+    .title-heater{
+        margin-top: 20px;
+     }
+
+    .wrapper{
+        margin-top: 20px;
+        color: red;
+        height: 140%;
+    }
+
+    .wrapper a{
+        color: black;
+        text-shadow: #AAAAAA 1px 1px 4px;
+        margin: 8px 0;
+        font-size: 15px;
+    }
+
+    .wrapper a:hover{
+        text-decoration: none;
+        text-shadow: #AAAAAA 3px 3px 10px;
+        transition: all .6s ease;
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    .wrapper span{
+        font-size: 20px;
+    }
+
+    .itemmmm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .itemmmm a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .itemmmm a div{
+        margin-top: 10px;
+    }
+
+    .itemmmm img{
+
+        height: 280px;
+        width: auto;
+    }
+    .row{
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+{% endblock %}

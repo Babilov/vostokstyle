@@ -1,0 +1,18 @@
+{% load image_tags %}
+<div class="row">
+{% for heater in data.heaters %}
+    {% get_main_image_by_id heater.item.id as image %}
+    <div class="itemmmm col-md-4">
+        <a href="{% url 'item-detail' heater.item_id %}">
+            <img src="media/{{ image }}/" alt="no_photo">
+            <div>
+                {{ heater.item.name }}
+            </div>
+
+            <div>
+                <span>{{ heater.item.price }}₽</span>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+</div>

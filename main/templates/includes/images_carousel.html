@@ -1,0 +1,67 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true">
+            <img src="../../../media/support_items/previous.png" alt="none">
+        </span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in data.images %}
+                <div class="item {% if image.main_photo %}active{% endif %}">
+                    <img class="carousel__img" src="/media/{{ image }}" alt="hyi">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true">
+            <img src="../../../media/support_items/next.png" alt="none">
+        </span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<style>
+    .item{
+        display: flex;
+        height: 400px;
+        width: 400px;
+    }
+    .carousel__img{
+        margin: 0 auto;
+        height: 250px;
+    }
+</style>
+
+<script>
+    jQuery(function ($) {
+    function fix_size() {
+        var images = $('.item img');
+        images.each(setsize);
+
+        function setsize() {
+            var img = $(this),
+                img_dom = img.get(0),
+                container = img.parents('.item');
+            if (img_dom.complete) {
+                resize();
+            } else img.one('load', resize);
+
+            function resize() {
+                if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
+                    img.height('100%');
+                    img.width('auto');
+
+                    return;
+                }
+                img.height('100%');
+                img.width('auto');
+            }
+        }
+    }
+    $(window).on('resize', fix_size);
+    fix_size();
+});
+</script>

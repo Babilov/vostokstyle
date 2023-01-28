@@ -1,0 +1,19 @@
+{% load image_tags %}
+<div class="row align-center">
+{% for burner in data.burners %}
+    {% get_main_image_by_id burner.item.id as image %}
+    <div class="itemmmm col-md-4">
+        <a href="{% url 'item-detail' burner.item_id %}">
+            <img src="media/{{ image }}/" alt="no_photo">
+            <div>
+                {{ burner.item.name }}
+            </div>
+
+            <div>
+                <span>{{ burner.item.price }}₽</span>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+</div>
+

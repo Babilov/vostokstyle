@@ -1,4 +1,24 @@
-<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+{% load get_search_item_tag %}
+{% get_search_item request as path %}
+
+<form class="form-inline my-2 my-lg-0 search" method="GET" action="/search/ {{path}}">
+      <input class="form-control mr-sm-2 search__input" style="width: 80%" placeholder="Поиск" type="text" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0 hidden" style="width: 15%;" type="submit">Search</button>
+
 </form>
+
+<style>
+    .search{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search__input{
+        border-radius: 20px;
+        height: 60%;
+    }
+
+</style>
