@@ -1,18 +1,26 @@
 <div class="categories hidden">
+
     {% for category in data.categories %}
-        <div>
+        <div class="category_item">
             <a href="{% url 'category-detail' category.id %}">{{ category }}</a>
         </div>
     {% endfor %}
-    <button class="close-menu">x</button>
+    <div class="hyi">
+        <button class="close-menu btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+          <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+          </svg>
+        </button>
+    </div>
 </div>
+
 
 
 <style>
     .categories {
   position: fixed;
   display: block;
-  width: 20%;
+  width: 15%;
   height: 100%;
   left: -700px;
   top: 0;
@@ -21,6 +29,7 @@
   background: #eee;
   animation-name: menuClose;
   animation-duration: 1s;
+  background: white;
 }
 
 .categories.active {
@@ -28,6 +37,12 @@
   animation-name: menuOpen;
   animation-duration: 1s;
 }
+
+.hyi{
+    position: absolute;
+    margin-left: 265px;
+    margin-top: -110px;
+    }
 
 .categories.active .close-menu {
   position: absolute;
@@ -42,6 +57,14 @@
   line-height: 60px;
   cursor: pointer;
 }
+.category_item{
+    margin-bottom: 15px;
+}
+
+.category_item a{
+    color: black;
+}
+
 
 @keyframes menuOpen {
   from {
@@ -60,4 +83,6 @@
     left: -700px;
   }
 }
+
+
 </style>

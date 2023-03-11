@@ -1,6 +1,11 @@
 {% extends 'main/base.html' %}
 {% load image_tags %}
 
+{% block title %}
+    Восток Стиль
+{% endblock %}
+
+
 {% block nav %}
     {% include 'includes/navbar.html' %}
 {% endblock %}
@@ -10,18 +15,22 @@
     <div class="wrapper">
     <div class="row">
         {% for item in data.items %}
+        <div class="itemmmm col-md-4">
             <a href="{% url 'item-detail' item.id %}">
                 {% get_main_image_by_id item.id as image %}
-                <div class="itemmmm">
+
 
                     <img src="/media/{{ image }}/" alt="no_photo">
                     <div>{{ item.name }}</div>
-                    <span>{{ item.price }}</span>
-                </div>
-                {% endfor %}
+                    <span>{{ item.price }}₽ </span>
+
+
             </a>
+        </div>
+        {% endfor %}
     </div>
     </div>
+
 {% endblock %}
 
 {% block style %}
@@ -41,7 +50,7 @@
     .wrapper{
         margin-top: 20px;
         color: red;
-        height: 140%;
+        height: 80%;
     }
 
     .wrapper a{
@@ -61,6 +70,7 @@
 
     .wrapper span{
         font-size: 20px;
+        margin-top: 10px;
     }
 
     .itemmmm{
@@ -68,6 +78,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        margin-bottom: 30px;
     }
 
     .itemmmm a{
@@ -88,8 +99,6 @@
     .row{
         margin-left: 0;
         margin-right: 0;
-        display: flex;
-        justify-content: space-between;
     }
 </style>
 

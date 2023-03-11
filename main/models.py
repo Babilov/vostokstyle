@@ -1,15 +1,21 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.contrib.auth.models import User
 
 
 class AllItems(models.Model):
     name = models.CharField(max_length=100)
-    price = models.FloatField()
+    name_lower = models.CharField(max_length=100)
+    price = models.IntegerField()
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     description = models.TextField(blank=True)
 
     def __str__(self):
         return str(self.name) + " " + str(self.price)
+
+    def save(self, *args, **kwargs):
+        self.name_lower = self.name.lower() if self.name else None
+        return super().save(*args, **kwargs)
 
 
 class Burner(models.Model):
@@ -70,3 +76,11 @@ class Images(models.Model):
 
     def __str__(self):
         return str(self.image)
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(AllItems, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    quantity = models.IntegerField()
+

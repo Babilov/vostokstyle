@@ -1,16 +1,11 @@
 <nav class="navbar">
-    <a class="nav__item burger__item" href="#"><i class="fi fi-br-menu-burger burger"></i></a>
-    {% include 'includes/categories.html' %}
-    <a href="{% url 'home' %}"><img src="../../../media/photos/logo1.png" alt="logo" style="width: 200px; height: auto"></a>
-{#    <div class="dropdown">#}
-{#        <a href="" class="nav__item">#}
-{#            Каталог#}
-{#        </a>#}
-{#        {% include 'includes/categories.html' %}#}
-{#    </div>#}
-    {%  include 'includes/search.html' %}
-    <div style="display: flex">
 
+        <a class="nav__item burger__item" href="#"><i class="fi fi-br-menu-burger burger"></i></a>
+            {% include 'includes/categories.html' %}
+        <a href="{% url 'home' %}"><img src="../../../media/photos/logo1.png" alt="logo" style="width: 200px; "></a>
+
+    {%  include 'includes/search.html' %}
+    <div style="display: flex;">
             <a href="#" class="nav__item">
                 <div style="display: flex; flex-direction: column; align-items: center">
                     <i class="fi fi-rr-marker"></i>
@@ -34,6 +29,16 @@
                 </div>
             </a>
 
+            <a href="{% if request.user.is_authenticated %} # {% else %} {% url 'register' %} {% endif %}" class="nav__item">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                    <i class="fi fi-rr-user"></i>
+                    {% if request.user.is_authenticated %}
+                        Кабиет
+                    {% else %}
+                        Войти
+                    {% endif %}
+                </div>
+            </a>
 
     </div>
 
@@ -64,8 +69,13 @@
         {#background: -webkit-linear-gradient(90deg, #8d10e8,#ff5c5d,#d7d195);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #8d10e8,#ff5c5d,#d7d195);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */#}
         background: -webkit-linear-gradient(90deg, #871971,#8f2549);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #871971,#8f2549);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         height: 20%;
+        max-height: 100px;
         align-items: center;
         {#border-radius: 60px;#}
+    }
+
+    .div__logo{
+        flex-basis: 20%;
     }
 
     .burger{

@@ -8,9 +8,18 @@
 </div>
 
 <div class="buy">
-    {{ price }} ₽
-    <button class="btn btn-success"> Добавить в корзину </button>
-    <button class="btn btn-success"> Купить </button>
+    <div><span class="price">{{ price }} </span> ₽ </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="quantity__div">
+            <button type="button" class="change change_minus">-</button>
+            <label for="hidden_quantity" id="quantity" class="quantity">1</label>
+            <input type="hidden" id="hidden_quantity" class="hidden_quantity" name="quantity" value="1">
+            <button type="button" class="change change_plus">+</button>
+        </div>
+        <button type="submit" class="btn btn-success btn-add"> Добавить в корзину </button>
+{#        <button class="btn btn-success"> Купить </button>#}
+    </form>
 </div>
 
 <style>
@@ -20,8 +29,13 @@
         margin-right: 100px;
     }
 
+    .btn-add{
+        margin-top: 5px;
+        width: 100%;
+    }
+
     .buy{
-        height: 20%;
+        height: 25%;
         width: 20%;
         background: white;
         border-radius: 20px;
@@ -37,4 +51,37 @@
         margin-bottom: 5px;
     }
 
+    .quantity__div{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .change{
+        border-radius: 50%;
+        border: 0;
+        width: 50px;
+        height: 50px;
+    }
+
 </style>
+
+<script>
+    $('.change_plus').on('click', function (){
+        let $quantity = parseInt($('.quantity').text());
+        let $price = parseFloat($('.price').text().replace(',', '.')) / $quantity;
+
+        $('.quantity').text($quantity + 1);
+        $('.price').text($price * ($quantity + 1));
+        $('.hidden_quantity').val($quantity + 1)
+    });
+
+    $('.change_minus').on('click', function (){
+        let $quantity = parseInt($('.quantity').text());
+        let $price = parseInt($('.price').text()) / $quantity;
+        if ($quantity > 1) {
+            $('.quantity').text($quantity - 1);
+            $('.price').text($price * ($quantity - 1));
+        }
+    });
+</script>

@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Вход
+{% endblock %}
+
+{% block nav %}
+    {% include 'includes/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <form action="." method="post" class="register-form">
+        {% for field in form %}
+
+            <div class="field">
+                {{field.label_tag}}
+                <br>
+               {{ field }}
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+        <p class="input-p"><input type="submit" value="Войти" class="btn btn-success input-btn"></p>
+    </form>
+{% endblock %}
+
+{% block style %}
+    <style>
+        .register-form{
+            margin: 0 auto;
+            background: white;
+            width: 20%;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            max-height: 450px;
+            max-width: 450px;
+        }
+        .field{
+            margin: 5px auto;
+            width: 56%;
+        }
+
+        .input-p{
+            margin: 10px auto;
+            width: 56%;
+        }
+
+        .input-btn{
+            width: 100%;
+        }
+    </style>
+{% endblock %}

@@ -1,5 +1,10 @@
 {% extends 'main/base.html' %}
 {% load image_tags %}
+
+{% block title %}
+    Категории
+{% endblock %}
+
 {% block nav %}
     {% include 'includes/navbar.html' %}
 {% endblock %}
@@ -8,14 +13,18 @@
     <div class="wrapper">
         <div class="row">
             {% for item in data.items %}
+            {% get_main_image_by_id item.id as image %}
+            <div class="itemmmm col-md-4">
                 <a href="{% url 'item-detail' item.id %}">
-                    <div class="itemmmm">
-                        {% get_main_image_by_id item.id as image %}
-                        <img src="/media/{{ image }}" alt="img">
-                        <div>{{ item.name }}</div>
-                        <span>{{ item.price }}</span>
+                    <img src="/media/{{ image }}" alt="img">
+                    <div>
+                        {{ item.name }}
                     </div>
+                    <span>
+                        {{ item.price }}₽
+                    </span>
                 </a>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -39,7 +48,7 @@
     .wrapper{
         margin-top: 20px;
         color: red;
-        height: 140%;
+        height: 80%;
     }
 
     .wrapper a{
@@ -59,6 +68,7 @@
 
     .wrapper span{
         font-size: 20px;
+        margin-top: 10px;
     }
 
     .itemmmm{
@@ -83,11 +93,16 @@
         height: 280px;
         width: auto;
     }
+<!--    .roww{-->
+<!--        margin-left: 0;-->
+<!--        margin-right: 0;-->
+<!--        display: flex;-->
+<!--        justify-content: space-between;-->
+<!--    }-->
+
     .row{
         margin-left: 0;
         margin-right: 0;
-        display: flex;
-        justify-content: space-between;
     }
 
     </style>
